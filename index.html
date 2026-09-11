@@ -1,0 +1,955 @@
+<title>Shenni Liang</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   TOKENS — full light palette on bare :root
+   ============================================================ */
+:root {
+  --bg:          #F7F6F2;
+  --surface:     #FFFFFF;
+  --surface-alt: #F0EFE9;
+  --border:      #E2DFD8;
+  --ink:         #1A1820;
+  --muted:       #6D6B7C;
+  --accent:      #4F46C8;
+  --accent-dim:  #ECEAFF;
+  --accent-text: #3830A0;
+
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body:    'DM Sans', system-ui, -apple-system, sans-serif;
+
+  --max-w:  740px;
+  --nav-h:  58px;
+  --radius: 8px;
+}
+
+/* Dark — system default */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:          #0B0A11;
+    --surface:     #12101C;
+    --surface-alt: #191728;
+    --border:      #242236;
+    --ink:         #E4E2EF;
+    --muted:       #9490A8;
+    --accent:      #7B74E8;
+    --accent-dim:  #1C1A35;
+    --accent-text: #A09BF0;
+  }
+}
+
+/* Dark — explicit toggle */
+:root[data-theme="dark"] {
+  --bg:          #0B0A11;
+  --surface:     #12101C;
+  --surface-alt: #191728;
+  --border:      #242236;
+  --ink:         #E4E2EF;
+  --muted:       #9490A8;
+  --accent:      #7B74E8;
+  --accent-dim:  #1C1A35;
+  --accent-text: #A09BF0;
+}
+
+/* Light — explicit toggle */
+:root[data-theme="light"] {
+  --bg:          #F7F6F2;
+  --surface:     #FFFFFF;
+  --surface-alt: #F0EFE9;
+  --border:      #E2DFD8;
+  --ink:         #1A1820;
+  --muted:       #6D6B7C;
+  --accent:      #4F46C8;
+  --accent-dim:  #ECEAFF;
+  --accent-text: #3830A0;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  padding-inline: 24px;
+  padding-block: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+a:hover { color: var(--accent-text); text-decoration: underline; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+  html { scroll-behavior: auto; }
+}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav-outer {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+nav {
+  max-width: var(--max-w);
+  margin-inline: auto;
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.nav-name {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.nav-name:hover { color: var(--accent); text-decoration: none; }
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: color 0.15s;
+}
+.nav-links a:hover { color: var(--ink); text-decoration: none; }
+
+.theme-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--muted);
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+}
+.theme-btn:hover { color: var(--ink); }
+
+/* ============================================================
+   CONTAINER & SECTIONS
+   ============================================================ */
+.container {
+  max-width: var(--max-w);
+  margin-inline: auto;
+}
+
+section {
+  padding-block: 80px;
+  border-bottom: 1px solid var(--border);
+}
+
+.eyebrow {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 36px;
+  display: block;
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+#hero {
+  padding-top: 100px;
+  padding-bottom: 88px;
+  border-bottom: 1px solid var(--border);
+}
+
+.hero-inner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 56px;
+}
+
+.hero-text { flex: 1; min-width: 0; }
+
+.hero-photo-wrap { flex-shrink: 0; padding-top: 8px; }
+
+/* Photo: swap the placeholder for a real <img> once you have one */
+.hero-photo,
+.hero-photo-placeholder {
+  width: 172px;
+  height: 172px;
+  border-radius: 50%;
+  display: block;
+}
+
+.hero-photo {
+  object-fit: cover;
+  /* subtle ring in both themes */
+  box-shadow: 0 0 0 3px var(--bg), 0 0 0 4px var(--border);
+}
+
+/* Initials placeholder — remove this div once you add a real photo */
+.hero-photo-placeholder {
+  background: var(--accent-dim);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: -0.02em;
+  user-select: none;
+}
+
+.hero-name {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 4.8rem);
+  font-weight: 300;
+  font-style: italic;
+  font-optical-sizing: auto;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  text-wrap: balance;
+  margin-bottom: 24px;
+}
+
+.hero-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 36px;
+}
+
+.hero-role {
+  font-size: 1rem;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.hero-affiliation {
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.hero-affiliation a {
+  color: var(--muted);
+  font-weight: 500;
+  transition: color 0.15s;
+}
+.hero-affiliation a:hover { color: var(--ink); text-decoration: underline; }
+
+.hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.83rem;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: all 0.15s;
+  line-height: 1;
+}
+
+.pill-primary {
+  background: var(--accent);
+  color: white;
+}
+.pill-primary:hover { background: var(--accent-text); color: white; text-decoration: none; }
+
+.pill-ghost {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+.pill-ghost:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+/* ============================================================
+   ABOUT
+   ============================================================ */
+.bio {
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: var(--ink);
+  max-width: 620px;
+}
+.bio p + p { margin-top: 18px; }
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 36px;
+}
+
+.tag {
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 4px 13px;
+  border-radius: 100px;
+  background: var(--accent-dim);
+  color: var(--accent-text);
+  letter-spacing: 0.01em;
+}
+
+/* ============================================================
+   PUBLICATIONS
+   ============================================================ */
+.pub-list { display: flex; flex-direction: column; }
+
+.pub {
+  padding-block: 28px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.pub:last-child { border-bottom: 1px solid var(--border); }
+
+.pub-title {
+  font-size: 0.98rem;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--ink);
+}
+.pub-title a { color: var(--ink); }
+.pub-title a:hover { color: var(--accent); text-decoration: none; }
+
+.pub-authors {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+.pub-authors strong { color: var(--ink); font-weight: 500; }
+
+.pub-venue-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.pub-venue {
+  font-size: 0.83rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.pub-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 100px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--accent-dim);
+  color: var(--accent-text);
+}
+
+.pub-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 2px;
+}
+
+.pub-link {
+  font-size: 0.8rem;
+  color: var(--accent);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.pub-link:hover { color: var(--accent-text); text-decoration: underline; }
+
+/* ============================================================
+   PROJECTS
+   ============================================================ */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 16px;
+}
+
+.project-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: border-color 0.2s;
+  background: var(--surface);
+}
+.project-card:hover { border-color: var(--accent); }
+
+.project-name {
+  font-size: 0.97rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+.project-desc {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.6;
+  flex: 1;
+}
+
+.project-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.stack-tag {
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 100px;
+  background: var(--surface-alt);
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+
+.project-cta {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  align-self: flex-start;
+  margin-top: 4px;
+  transition: color 0.15s;
+}
+.project-cta:hover { color: var(--accent-text); text-decoration: none; }
+
+/* ============================================================
+   CV
+   ============================================================ */
+.cv-body { display: flex; flex-direction: column; gap: 40px; }
+
+.cv-group h3 {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.cv-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+  padding-block: 14px;
+  border-top: 1px solid var(--border);
+}
+.cv-item:last-child { border-bottom: 1px solid var(--border); }
+
+.cv-left {}
+
+.cv-role {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+.cv-org {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.cv-date {
+  font-size: 0.82rem;
+  color: var(--muted);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+
+.cv-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 40px;
+  background: var(--ink);
+  color: var(--bg);
+  padding: 12px 22px;
+  border-radius: var(--radius);
+  font-size: 0.88rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+.cv-cta:hover { opacity: 0.75; color: var(--bg); text-decoration: none; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding-block: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 600px) {
+  :root { --nav-h: 52px; }
+
+  body { padding-inline: 20px; }
+
+  #hero { padding-top: 60px; padding-bottom: 60px; }
+  section { padding-block: 56px; }
+
+  .nav-links li:nth-child(n+3) { display: none; }
+
+  /* Hero stacks: photo on top, then text */
+  .hero-inner {
+    flex-direction: column-reverse;
+    gap: 28px;
+  }
+  .hero-photo,
+  .hero-photo-placeholder {
+    width: 120px;
+    height: 120px;
+  }
+  .hero-photo-placeholder { font-size: 1.9rem; }
+
+  .project-grid { grid-template-columns: 1fr; }
+
+  .cv-item { flex-direction: column; gap: 2px; }
+  .cv-date { font-size: 0.78rem; }
+}
+</style>
+
+<!-- ============================================================
+     NAVIGATION
+     ============================================================ -->
+<div class="nav-outer">
+  <nav>
+    <a href="#hero" class="nav-name">Shenni Liang</a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#cv">CV</a></li>
+      </ul>
+      <button class="theme-btn" id="themeBtn" aria-label="Toggle light/dark theme">
+        <svg id="iconSun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+          <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <svg id="iconMoon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+</div>
+
+<!-- ============================================================
+     MAIN CONTENT
+     ============================================================ -->
+<div class="container">
+
+  <!-- HERO -------------------------------------------------- -->
+  <section id="hero">
+    <div class="hero-inner">
+
+      <!-- Left: text content -->
+      <div class="hero-text">
+        <!-- ✏️ EDIT: Your name -->
+        <h1 class="hero-name">Shenni Liang</h1>
+
+        <div class="hero-meta">
+          <!-- ✏️ EDIT: Your role and program name -->
+          <p class="hero-role">PhD Student · Computational Biology & Medicine</p>
+          <p class="hero-affiliation">
+            <!-- ✏️ EDIT: Lab URL -->
+            <a href="https://hajirasouliha-lab.com" target="_blank" rel="noopener">Hajirasouliha Lab</a>,
+            Weill Cornell Medicine
+          </p>
+        </div>
+
+        <div class="hero-links">
+          <!-- ✏️ EDIT: Your email (already filled) -->
+          <a href="mailto:shl4034@med.cornell.edu" class="pill pill-primary">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
+            Email
+          </a>
+          <!-- ✏️ EDIT: Your GitHub URL -->
+          <a href="https://github.com/" target="_blank" rel="noopener" class="pill pill-ghost">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            GitHub
+          </a>
+          <!-- ✏️ EDIT: Your Google Scholar URL -->
+          <a href="https://scholar.google.com/" target="_blank" rel="noopener" class="pill pill-ghost">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>
+            Google Scholar
+          </a>
+        </div>
+      </div><!-- /hero-text -->
+
+      <!-- Right: profile photo -->
+      <div class="hero-photo-wrap">
+        <!--
+          ✏️ PHOTO: Two options —
+
+          Option A (recommended for GitHub Pages):
+          Save your photo as "photo.jpg" in the same folder as index.html, then replace
+          the placeholder div below with:
+            <img src="photo.jpg" alt="Shenni Liang" class="hero-photo">
+
+          Option B (works anywhere, no extra file):
+          Host your photo on Google Drive or Dropbox and use its public link:
+            <img src="https://your-image-url.jpg" alt="Shenni Liang" class="hero-photo">
+        -->
+        <div class="hero-photo-placeholder" role="img" aria-label="Photo placeholder — replace with your photo">SL</div>
+      </div>
+
+    </div><!-- /hero-inner -->
+  </section>
+
+  <!-- ABOUT ------------------------------------------------- -->
+  <section id="about">
+    <span class="eyebrow">About</span>
+    <!-- ✏️ EDIT: Replace with your actual bio -->
+    <div class="bio">
+      <p>
+        I'm a PhD student in the <a href="https://hajirasouliha-lab.com" target="_blank" rel="noopener">Hajirasouliha Lab</a> at Weill Cornell Medicine, advised by Prof. Iman Hajirasouliha. My research is at the intersection of computer science and genomics — I develop computational methods to study [your focus, e.g., structural variation, tumor evolution, single-cell heterogeneity] in cancer and other complex diseases.
+      </p>
+      <p>
+        Before Cornell, I studied computer science at [your undergraduate institution]. I'm broadly interested in algorithms, statistical modeling, and how computation can accelerate our understanding of the genome and its role in disease.
+      </p>
+    </div>
+    <!-- ✏️ EDIT: Update your research interest tags -->
+    <div class="tags">
+      <span class="tag">Computational Genomics</span>
+      <span class="tag">Structural Variation</span>
+      <span class="tag">Tumor Heterogeneity</span>
+      <span class="tag">Machine Learning</span>
+      <span class="tag">Single-cell Analysis</span>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS ------------------------------------------ -->
+  <section id="publications">
+    <span class="eyebrow">Publications</span>
+    <div class="pub-list">
+
+      <!--
+        ✏️ HOW TO ADD A PUBLICATION:
+        Copy one <article class="pub"> block and fill in:
+          - pub-title: paper name and link
+          - pub-authors: author list (wrap your name in <strong>)
+          - pub-venue: journal/conference name and year
+          - pub-badge: "Journal", "Conference", or "Preprint"
+          - pub-actions: links to paper, arXiv, code, data, etc.
+      -->
+
+      <article class="pub">
+        <div class="pub-title">
+          <a href="#" target="_blank" rel="noopener">
+            [Paper title — e.g., A scalable algorithm for detecting complex structural variants in long-read sequencing data]
+          </a>
+        </div>
+        <div class="pub-authors">
+          <strong>S. Liang</strong>, A. Collaborator, B. Collaborator, I. Hajirasouliha
+        </div>
+        <div class="pub-venue-row">
+          <span class="pub-venue">Nature Methods, 2025</span>
+          <span class="pub-badge">Journal</span>
+        </div>
+        <div class="pub-actions">
+          <a href="#" class="pub-link">Paper</a>
+          <a href="#" class="pub-link">arXiv</a>
+          <a href="#" class="pub-link">Code</a>
+        </div>
+      </article>
+
+      <article class="pub">
+        <div class="pub-title">
+          <a href="#" target="_blank" rel="noopener">
+            [Paper title — e.g., Inferring tumor evolutionary history from single-cell sequencing data]
+          </a>
+        </div>
+        <div class="pub-authors">
+          A. Collaborator, <strong>S. Liang</strong>, C. Collaborator, I. Hajirasouliha
+        </div>
+        <div class="pub-venue-row">
+          <span class="pub-venue">Genome Research, 2024</span>
+          <span class="pub-badge">Journal</span>
+        </div>
+        <div class="pub-actions">
+          <a href="#" class="pub-link">Paper</a>
+          <a href="#" class="pub-link">Code</a>
+        </div>
+      </article>
+
+      <article class="pub">
+        <div class="pub-title">
+          <a href="#" target="_blank" rel="noopener">
+            [Preprint title — e.g., Benchmarking structural variant callers across sequencing platforms]
+          </a>
+        </div>
+        <div class="pub-authors">
+          <strong>S. Liang</strong>, D. Collaborator, I. Hajirasouliha
+        </div>
+        <div class="pub-venue-row">
+          <span class="pub-venue">bioRxiv, 2025</span>
+          <span class="pub-badge">Preprint</span>
+        </div>
+        <div class="pub-actions">
+          <a href="#" class="pub-link">Preprint</a>
+          <a href="#" class="pub-link">Code</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- PROJECTS ---------------------------------------------- -->
+  <section id="projects">
+    <span class="eyebrow">Projects</span>
+    <div class="project-grid">
+
+      <!--
+        ✏️ HOW TO ADD A PROJECT:
+        Copy one <div class="project-card"> block and fill in:
+          - project-name: tool or project name
+          - project-desc: what it does, why it matters
+          - stack-tag spans: languages/tools used
+          - project-cta: link to GitHub or project page
+      -->
+
+      <div class="project-card">
+        <div class="project-name">[Tool or Project Name]</div>
+        <div class="project-desc">
+          What this project does, what biological or computational problem it solves, and where to find it or how it's been used.
+        </div>
+        <div class="project-stack">
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">C++</span>
+          <span class="stack-tag">Genomics</span>
+        </div>
+        <a href="https://github.com/" target="_blank" rel="noopener" class="project-cta">GitHub →</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-name">[Tool or Project Name]</div>
+        <div class="project-desc">
+          What this project does, what biological or computational problem it solves, and where to find it or how it's been used.
+        </div>
+        <div class="project-stack">
+          <span class="stack-tag">R</span>
+          <span class="stack-tag">Bioconductor</span>
+          <span class="stack-tag">Single-cell</span>
+        </div>
+        <a href="https://github.com/" target="_blank" rel="noopener" class="project-cta">GitHub →</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-name">[Tool or Project Name]</div>
+        <div class="project-desc">
+          What this project does, what biological or computational problem it solves, and where to find it or how it's been used.
+        </div>
+        <div class="project-stack">
+          <span class="stack-tag">PyTorch</span>
+          <span class="stack-tag">WDL</span>
+          <span class="stack-tag">ML</span>
+        </div>
+        <a href="https://github.com/" target="_blank" rel="noopener" class="project-cta">GitHub →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CV ---------------------------------------------------- -->
+  <section id="cv">
+    <span class="eyebrow">CV</span>
+    <div class="cv-body">
+
+      <div class="cv-group">
+        <h3>Education</h3>
+        <!-- ✏️ EDIT: Fill in your program and undergraduate school -->
+        <div class="cv-item">
+          <div class="cv-left">
+            <div class="cv-role">PhD, Computational Biology & Medicine</div>
+            <div class="cv-org">Weill Cornell Medicine · Hajirasouliha Lab</div>
+          </div>
+          <div class="cv-date">2022 – present</div>
+        </div>
+        <div class="cv-item">
+          <div class="cv-left">
+            <div class="cv-role">B.S., Computer Science</div>
+            <div class="cv-org">[Your Undergraduate Institution]</div>
+          </div>
+          <div class="cv-date">20XX – 20XX</div>
+        </div>
+      </div>
+
+      <div class="cv-group">
+        <h3>Research &amp; Experience</h3>
+        <!-- ✏️ EDIT: Add your research positions and internships -->
+        <div class="cv-item">
+          <div class="cv-left">
+            <div class="cv-role">Graduate Researcher</div>
+            <div class="cv-org">Hajirasouliha Lab, Weill Cornell Medicine</div>
+          </div>
+          <div class="cv-date">2022 – present</div>
+        </div>
+        <div class="cv-item">
+          <div class="cv-left">
+            <div class="cv-role">[Internship or Research Position]</div>
+            <div class="cv-org">[Organization]</div>
+          </div>
+          <div class="cv-date">Summer 20XX</div>
+        </div>
+      </div>
+
+      <div class="cv-group">
+        <h3>Awards &amp; Fellowships</h3>
+        <!-- ✏️ EDIT: Add any fellowships, grants, or awards -->
+        <div class="cv-item">
+          <div class="cv-left">
+            <div class="cv-role">[Fellowship or Award Name]</div>
+            <div class="cv-org">[Granting Organization]</div>
+          </div>
+          <div class="cv-date">20XX</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ✏️ EDIT: Link to your actual CV PDF -->
+    <a href="#" class="cv-cta">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download full CV
+    </a>
+  </section>
+
+</div><!-- /container -->
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer>
+  <span>Shenni Liang · Weill Cornell Medicine</span>
+  <span>
+    <a href="mailto:shl4034@med.cornell.edu" style="color:var(--muted); text-decoration:none;">
+      shl4034@med.cornell.edu
+    </a>
+  </span>
+</footer>
+
+<!-- ============================================================
+     THEME TOGGLE SCRIPT
+     ============================================================ -->
+<script>
+  (function () {
+    var root   = document.documentElement;
+    var btn    = document.getElementById('themeBtn');
+    var sun    = document.getElementById('iconSun');
+    var moon   = document.getElementById('iconMoon');
+
+    function isDark() {
+      var t = root.getAttribute('data-theme');
+      if (t === 'dark')  return true;
+      if (t === 'light') return false;
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+
+    function updateIcon() {
+      var dark = isDark();
+      sun.style.display  = dark  ? 'block' : 'none';
+      moon.style.display = dark  ? 'none'  : 'block';
+    }
+
+    // Apply saved preference on load
+    try {
+      var saved = localStorage.getItem('shenni-theme');
+      if (saved === 'dark' || saved === 'light') {
+        root.setAttribute('data-theme', saved);
+      }
+    } catch (e) {}
+
+    updateIcon();
+
+    btn.addEventListener('click', function () {
+      var next = isDark() ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      updateIcon();
+      try { localStorage.setItem('shenni-theme', next); } catch (e) {}
+    });
+  })();
+</script>
