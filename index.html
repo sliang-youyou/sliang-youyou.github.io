@@ -1,4 +1,10 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Shenni Liang</title>
+<meta name="description" content="Shenni Liang — PhD Candidate, Tri-Institutional Computational Biology & Medicine, Weill Cornell Medicine.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,10 +20,10 @@
   --surface-alt: #F0EFE9;
   --border:      #E2DFD8;
   --ink:         #1A1820;
-  --muted:       #6D6B7C;
-  --accent:      #4F46C8;
-  --accent-dim:  #ECEAFF;
-  --accent-text: #3830A0;
+  --muted:       #5C5A6B;
+  --accent:      #115E59;
+  --accent-dim:  #DCF3EF;
+  --accent-text: #0B4038;
 
   --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
   --font-body:    'DM Sans', system-ui, -apple-system, sans-serif;
@@ -36,9 +42,9 @@
     --border:      #242236;
     --ink:         #E4E2EF;
     --muted:       #9490A8;
-    --accent:      #7B74E8;
-    --accent-dim:  #1C1A35;
-    --accent-text: #A09BF0;
+    --accent:      #0D9488;
+    --accent-dim:  #0F2E2B;
+    --accent-text: #2DD4BF;
   }
 }
 
@@ -50,9 +56,9 @@
   --border:      #242236;
   --ink:         #E4E2EF;
   --muted:       #9490A8;
-  --accent:      #7B74E8;
-  --accent-dim:  #1C1A35;
-  --accent-text: #A09BF0;
+  --accent:      #0D9488;
+  --accent-dim:  #0F2E2B;
+  --accent-text: #2DD4BF;
 }
 
 /* Light — explicit toggle */
@@ -62,10 +68,10 @@
   --surface-alt: #F0EFE9;
   --border:      #E2DFD8;
   --ink:         #1A1820;
-  --muted:       #6D6B7C;
-  --accent:      #4F46C8;
-  --accent-dim:  #ECEAFF;
-  --accent-text: #3830A0;
+  --muted:       #5C5A6B;
+  --accent:      #115E59;
+  --accent-dim:  #DCF3EF;
+  --accent-text: #0B4038;
 }
 
 /* ============================================================
@@ -186,7 +192,7 @@ nav {
 }
 
 section {
-  padding-block: 80px;
+  padding-block: 36px;
   border-bottom: 1px solid var(--border);
 }
 
@@ -196,7 +202,7 @@ section {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--accent);
-  margin-bottom: 36px;
+  margin-bottom: 22px;
   display: block;
 }
 
@@ -204,8 +210,8 @@ section {
    HERO
    ============================================================ */
 #hero {
-  padding-top: 100px;
-  padding-bottom: 88px;
+  padding-top: 48px;
+  padding-bottom: 40px;
   border-bottom: 1px solid var(--border);
 }
 
@@ -223,9 +229,9 @@ section {
 /* Photo: swap the placeholder for a real <img> once you have one */
 .hero-photo,
 .hero-photo-placeholder {
-  width: 172px;
-  height: 172px;
-  border-radius: 50%;
+  width: 220px;
+  height: 220px;
+  border-radius: 12px;
   display: block;
 }
 
@@ -251,23 +257,21 @@ section {
 }
 
 .hero-name {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: clamp(3rem, 8vw, 4.8rem);
-  font-weight: 300;
-  font-style: italic;
-  font-optical-sizing: auto;
+  font-weight: 600;
   line-height: 1.02;
   letter-spacing: -0.025em;
   color: var(--ink);
   text-wrap: balance;
-  margin-bottom: 24px;
+  margin-bottom: 18px;
 }
 
 .hero-meta {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  margin-bottom: 36px;
+  margin-bottom: 24px;
 }
 
 .hero-role {
@@ -335,7 +339,7 @@ section {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 36px;
+  margin-top: 22px;
 }
 
 .tag {
@@ -354,13 +358,33 @@ section {
 .pub-list { display: flex; flex-direction: column; }
 
 .pub {
-  padding-block: 28px;
+  padding-block: 18px;
   border-top: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+}
+/* .pub:last-child { border-bottom: 1px solid var(--border); } */
+
+.pub-thumb {
+  flex-shrink: 0;
+  width: 110px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.pub-thumb img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.pub-body {
   display: flex;
   flex-direction: column;
   gap: 7px;
+  min-width: 0;
 }
-.pub:last-child { border-bottom: 1px solid var(--border); }
 
 .pub-title {
   font-size: 0.98rem;
@@ -484,7 +508,7 @@ section {
 /* ============================================================
    CV
    ============================================================ */
-.cv-body { display: flex; flex-direction: column; gap: 40px; }
+.cv-body { display: flex; flex-direction: column; gap: 26px; }
 
 .cv-group h3 {
   font-size: 0.7rem;
@@ -500,7 +524,7 @@ section {
   justify-content: space-between;
   align-items: baseline;
   gap: 24px;
-  padding-block: 14px;
+  padding-block: 9px;
   border-top: 1px solid var(--border);
 }
 .cv-item:last-child { border-bottom: 1px solid var(--border); }
@@ -532,7 +556,7 @@ section {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin-top: 40px;
+  margin-top: 22px;
   background: var(--ink);
   color: var(--bg);
   padding: 12px 22px;
@@ -550,7 +574,7 @@ section {
 footer {
   max-width: var(--max-w);
   margin-inline: auto;
-  padding-block: 40px;
+  padding-block: 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -568,8 +592,8 @@ footer {
 
   body { padding-inline: 20px; }
 
-  #hero { padding-top: 60px; padding-bottom: 60px; }
-  section { padding-block: 56px; }
+  #hero { padding-top: 32px; padding-bottom: 28px; }
+  section { padding-block: 26px; }
 
   .nav-links li:nth-child(n+3) { display: none; }
 
@@ -587,10 +611,14 @@ footer {
 
   .project-grid { grid-template-columns: 1fr; }
 
+  .pub-thumb { width: 76px; }
+
   .cv-item { flex-direction: column; gap: 2px; }
   .cv-date { font-size: 0.78rem; }
 }
 </style>
+</head>
+<body>
 
 <!-- ============================================================
      NAVIGATION
@@ -602,8 +630,8 @@ footer {
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#publications">Publications</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#cv">CV</a></li>
+        <!-- <li><a href="#projects">Projects</a></li> -->
+        <!-- <li><a href="#cv">CV</a></li> -->
       </ul>
       <button class="theme-btn" id="themeBtn" aria-label="Toggle light/dark theme">
         <svg id="iconSun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
@@ -633,27 +661,27 @@ footer {
 
         <div class="hero-meta">
           <!-- ✏️ EDIT: Your role and program name -->
-          <p class="hero-role">PhD Student · Computational Biology & Medicine</p>
+          <p class="hero-role">PhD Candidate · Tri-I Computational Biology & Medicine</p>
           <p class="hero-affiliation">
             <!-- ✏️ EDIT: Lab URL -->
-            <a href="https://hajirasouliha-lab.com" target="_blank" rel="noopener">Hajirasouliha Lab</a>,
+            <a href="https://ihlab.med.cornell.edu/" target="_blank" rel="noopener">Hajirasouliha Lab</a>,
             Weill Cornell Medicine
           </p>
         </div>
 
         <div class="hero-links">
-          <!-- ✏️ EDIT: Your email (already filled) -->
-          <a href="mailto:shl4034@med.cornell.edu" class="pill pill-primary">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
-            Email
-          </a>
           <!-- ✏️ EDIT: Your GitHub URL -->
-          <a href="https://github.com/" target="_blank" rel="noopener" class="pill pill-ghost">
+          <a href="https://github.com/sliang-youyou" target="_blank" rel="noopener" class="pill pill-ghost">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
             GitHub
           </a>
+          <!-- ✏️ EDIT: Your LinkedIn URL -->
+          <a href="https://www.linkedin.com/in/shenni-liang-979aba22a/" target="_blank" rel="noopener" class="pill pill-ghost">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.114 20.452H3.56V9h3.554v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
           <!-- ✏️ EDIT: Your Google Scholar URL -->
-          <a href="https://scholar.google.com/" target="_blank" rel="noopener" class="pill pill-ghost">
+          <a href="https://scholar.google.com/citations?hl=en&user=sk3q4nIAAAAJ" target="_blank" rel="noopener" class="pill pill-ghost">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>
             Google Scholar
           </a>
@@ -674,7 +702,7 @@ footer {
           Host your photo on Google Drive or Dropbox and use its public link:
             <img src="https://your-image-url.jpg" alt="Shenni Liang" class="hero-photo">
         -->
-        <div class="hero-photo-placeholder" role="img" aria-label="Photo placeholder — replace with your photo">SL</div>
+        <img src="photo.jpg" alt="Shenni Liang" class="hero-photo">
       </div>
 
     </div><!-- /hero-inner -->
@@ -686,19 +714,18 @@ footer {
     <!-- ✏️ EDIT: Replace with your actual bio -->
     <div class="bio">
       <p>
-        I'm a PhD student in the <a href="https://hajirasouliha-lab.com" target="_blank" rel="noopener">Hajirasouliha Lab</a> at Weill Cornell Medicine, advised by Prof. Iman Hajirasouliha. My research is at the intersection of computer science and genomics — I develop computational methods to study [your focus, e.g., structural variation, tumor evolution, single-cell heterogeneity] in cancer and other complex diseases.
+        I'm a PhD student in the <a href="https://ihlab.med.cornell.edu/" target="_blank" rel="noopener">Hajirasouliha Lab</a> at Weill Cornell Medicine, advised by Prof. Iman Hajirasouliha. My research is at the intersection of computer science and life science — I develop computational methods to study and model reproductive health medicine as well as human gut microbiome metagenomics.
       </p>
       <p>
-        Before Cornell, I studied computer science at [your undergraduate institution]. I'm broadly interested in algorithms, statistical modeling, and how computation can accelerate our understanding of the genome and its role in disease.
+        Before Weill Cornell Medicine, I studied computer science at Cornell University and was supervised by <a href="https://jaeheekimlab.github.io/team/jaehee-kim/" target="_blank" rel="noopener">Prof. Jaehee Kim</a> and <a href="https://anushashankar.weebly.com/" target="_blank" rel="noopener">Prof. Anusha Shankar</a>. I'm broadly interested in algorithms, statistical modeling, and how computation can accelerate our understanding of women health and evolutionary biology.
       </p>
     </div>
     <!-- ✏️ EDIT: Update your research interest tags -->
     <div class="tags">
-      <span class="tag">Computational Genomics</span>
-      <span class="tag">Structural Variation</span>
-      <span class="tag">Tumor Heterogeneity</span>
+      <span class="tag">Biomedical Imaging</span>
+      <span class="tag">Computer Vision</span>
       <span class="tag">Machine Learning</span>
-      <span class="tag">Single-cell Analysis</span>
+      <span class="tag">Metagenomics</span>
     </div>
   </section>
 
@@ -718,79 +745,40 @@ footer {
       -->
 
       <article class="pub">
-        <div class="pub-title">
-          <a href="#" target="_blank" rel="noopener">
-            [Paper title — e.g., A scalable algorithm for detecting complex structural variants in long-read sequencing data]
-          </a>
+        <div class="pub-thumb">
+          <img src="e3SIM_thumb.png" alt="e3SIM schematic: host contact network with pathogen transmission and evolving lineages">
         </div>
-        <div class="pub-authors">
-          <strong>S. Liang</strong>, A. Collaborator, B. Collaborator, I. Hajirasouliha
-        </div>
-        <div class="pub-venue-row">
-          <span class="pub-venue">Nature Methods, 2025</span>
-          <span class="pub-badge">Journal</span>
-        </div>
-        <div class="pub-actions">
-          <a href="#" class="pub-link">Paper</a>
-          <a href="#" class="pub-link">arXiv</a>
-          <a href="#" class="pub-link">Code</a>
-        </div>
-      </article>
-
-      <article class="pub">
-        <div class="pub-title">
-          <a href="#" target="_blank" rel="noopener">
-            [Paper title — e.g., Inferring tumor evolutionary history from single-cell sequencing data]
-          </a>
-        </div>
-        <div class="pub-authors">
-          A. Collaborator, <strong>S. Liang</strong>, C. Collaborator, I. Hajirasouliha
-        </div>
-        <div class="pub-venue-row">
-          <span class="pub-venue">Genome Research, 2024</span>
-          <span class="pub-badge">Journal</span>
-        </div>
-        <div class="pub-actions">
-          <a href="#" class="pub-link">Paper</a>
-          <a href="#" class="pub-link">Code</a>
-        </div>
-      </article>
-
-      <article class="pub">
-        <div class="pub-title">
-          <a href="#" target="_blank" rel="noopener">
-            [Preprint title — e.g., Benchmarking structural variant callers across sequencing platforms]
-          </a>
-        </div>
-        <div class="pub-authors">
-          <strong>S. Liang</strong>, D. Collaborator, I. Hajirasouliha
-        </div>
-        <div class="pub-venue-row">
-          <span class="pub-venue">bioRxiv, 2025</span>
-          <span class="pub-badge">Preprint</span>
-        </div>
-        <div class="pub-actions">
-          <a href="#" class="pub-link">Preprint</a>
-          <a href="#" class="pub-link">Code</a>
+        <div class="pub-body">
+          <div class="pub-title">
+            <a href="https://doi.org/10.1111/2041-210x.70278" target="_blank" rel="noopener">
+              e3SIM: Epidemiological‐ecological‐evolutionary simulation framework for genomic epidemiology
+            </a>
+          </div>
+          <div class="pub-authors">
+            P. Xu, <strong>S. Liang</strong>, A. Hahn, V. Zhao, W. T. Lo, B. C. Haller, B. Sobkowiak, M. H. Chitwood, C. Colijn, T. Cohen, K. Y. Rhee, P. W. Messer, M. T. Wells, A. G. Clark, J. Kim
+          </div>
+          <div class="pub-venue-row">
+            <span class="pub-venue">Methods in Ecology and Evolution, 17(4):1051–1059, 2026</span>
+            <span class="pub-badge">Journal</span>
+          </div>
+          <div class="pub-actions">
+            <a href="https://doi.org/10.1111/2041-210x.70278" class="pub-link" target="_blank" rel="noopener">Paper</a>
+            <a href="https://github.com/EpiEvoSoftware/e3SIM" class="pub-link" target="_blank" rel="noopener">Code</a>
+          </div>
         </div>
       </article>
 
     </div>
   </section>
 
-  <!-- PROJECTS ---------------------------------------------- -->
+  <!-- PROJECTS (hidden for now — uncomment to restore) ------- -->
+  <!--
   <section id="projects">
     <span class="eyebrow">Projects</span>
     <div class="project-grid">
 
-      <!--
-        ✏️ HOW TO ADD A PROJECT:
-        Copy one <div class="project-card"> block and fill in:
-          - project-name: tool or project name
-          - project-desc: what it does, why it matters
-          - stack-tag spans: languages/tools used
-          - project-cta: link to GitHub or project page
-      -->
+      HOW TO ADD A PROJECT: copy one .project-card block and fill in
+      project-name, project-desc, stack-tag spans, and the project-cta link.
 
       <div class="project-card">
         <div class="project-name">[Tool or Project Name]</div>
@@ -802,7 +790,7 @@ footer {
           <span class="stack-tag">C++</span>
           <span class="stack-tag">Genomics</span>
         </div>
-        <a href="https://github.com/" target="_blank" rel="noopener" class="project-cta">GitHub →</a>
+        <a href="https://github.com/" target="_blank" rel="noopener" class="project-cta">GitHub &rarr;</a>
       </div>
 
       <div class="project-card">
@@ -815,7 +803,7 @@ footer {
           <span class="stack-tag">Bioconductor</span>
           <span class="stack-tag">Single-cell</span>
         </div>
-        <a href="https://github.com/" target="_blank" rel="noopener" class="project-cta">GitHub →</a>
+        <a href="https://github.com/" target="_blank" rel="noopener" class="project-cta">GitHub &rarr;</a>
       </div>
 
       <div class="project-card">
@@ -828,45 +816,45 @@ footer {
           <span class="stack-tag">WDL</span>
           <span class="stack-tag">ML</span>
         </div>
-        <a href="https://github.com/" target="_blank" rel="noopener" class="project-cta">GitHub →</a>
+        <a href="https://github.com/" target="_blank" rel="noopener" class="project-cta">GitHub &rarr;</a>
       </div>
 
     </div>
   </section>
+  -->
 
-  <!-- CV ---------------------------------------------------- -->
+  <!-- CV (list hidden for now — download button stays visible) -->
   <section id="cv">
+    <!--
     <span class="eyebrow">CV</span>
     <div class="cv-body">
 
       <div class="cv-group">
         <h3>Education</h3>
-        <!-- ✏️ EDIT: Fill in your program and undergraduate school -->
         <div class="cv-item">
           <div class="cv-left">
-            <div class="cv-role">PhD, Computational Biology & Medicine</div>
-            <div class="cv-org">Weill Cornell Medicine · Hajirasouliha Lab</div>
+            <div class="cv-role">PhD, Computational Biology &amp; Medicine</div>
+            <div class="cv-org">Weill Cornell Medicine &middot; Hajirasouliha Lab</div>
           </div>
-          <div class="cv-date">2022 – present</div>
+          <div class="cv-date">2022 &ndash; present</div>
         </div>
         <div class="cv-item">
           <div class="cv-left">
             <div class="cv-role">B.S., Computer Science</div>
             <div class="cv-org">[Your Undergraduate Institution]</div>
           </div>
-          <div class="cv-date">20XX – 20XX</div>
+          <div class="cv-date">20XX &ndash; 20XX</div>
         </div>
       </div>
 
       <div class="cv-group">
         <h3>Research &amp; Experience</h3>
-        <!-- ✏️ EDIT: Add your research positions and internships -->
         <div class="cv-item">
           <div class="cv-left">
             <div class="cv-role">Graduate Researcher</div>
             <div class="cv-org">Hajirasouliha Lab, Weill Cornell Medicine</div>
           </div>
-          <div class="cv-date">2022 – present</div>
+          <div class="cv-date">2022 &ndash; present</div>
         </div>
         <div class="cv-item">
           <div class="cv-left">
@@ -879,7 +867,6 @@ footer {
 
       <div class="cv-group">
         <h3>Awards &amp; Fellowships</h3>
-        <!-- ✏️ EDIT: Add any fellowships, grants, or awards -->
         <div class="cv-item">
           <div class="cv-left">
             <div class="cv-role">[Fellowship or Award Name]</div>
@@ -890,9 +877,9 @@ footer {
       </div>
 
     </div>
+    -->
 
-    <!-- ✏️ EDIT: Link to your actual CV PDF -->
-    <a href="#" class="cv-cta">
+    <a href="CV_Shenni_Liang_2026_09.pdf" target="_blank" rel="noopener" class="cv-cta">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
       Download full CV
     </a>
@@ -906,9 +893,9 @@ footer {
 <footer>
   <span>Shenni Liang · Weill Cornell Medicine</span>
   <span>
-    <a href="mailto:shl4034@med.cornell.edu" style="color:var(--muted); text-decoration:none;">
-      shl4034@med.cornell.edu
-    </a>
+    <span style="color:var(--muted);">
+      Contact: shl4034 [at] med [dot] cornell [dot] edu
+    </span>
   </span>
 </footer>
 
@@ -953,3 +940,5 @@ footer {
     });
   })();
 </script>
+</body>
+</html>
